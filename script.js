@@ -59,3 +59,11 @@ window.addEventListener('click', (e) => {
     if(e.target.type === 'text' || e.target.type === 'password') return
     removeInputFieldActiveState()
 })
+
+// loginBtn.addEventListener('click', (e) => {
+//     e.preventDefault()
+//     const loginText = loginBtn.firstChild
+//     loginText.style.animation = 'submitBtnAnimation .6s ease .1s'
+//     loginText.innerHTML = `<img src="./assets/loading.gif" alt="">`
+//     console.log(loginText);
+// })
