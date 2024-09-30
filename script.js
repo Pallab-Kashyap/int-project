@@ -3,8 +3,8 @@ const inputField = document.querySelectorAll(".input-field");
 const onlineIdInput = document.querySelector("#input-id")
 const passwordInput = document.querySelector("#input-password")
 const loginBtn = document.querySelector("#submit-btn")
+// const showPassword = document.querySelector("#show-password-btn")
 
-console.log(inputField);
 
 let rememberMeToggle = false;
 rememberMeBox.addEventListener('click', (e) => {
@@ -18,12 +18,25 @@ const handleInputFieldClick = (e) => {
     e.currentTarget.lastElementChild.classList.add('active-span')
 }
 
-const removeInputFieldActiveState = () => {
-    inputField.forEach((e) => {
-        if(e.firstElementChild.value === '')
-            e.lastElementChild.classList.remove('active-span')
+const removeInputFieldActiveState = (e) => {
+    // showPassword.style.display = 'none'
+    // if(e === 'input-password') return
+    inputField.forEach((input) => {
 
-            e.classList.remove('active-input')
+        // console.log(input.firstElementChild.value)
+
+        if(input.firstElementChild.value === ''){
+            // if(input.firstElementChild.id === 'input-password'){
+            //     console.log('jfwofoi');
+            //     console.log(input.firstElementChild.value === '');
+            // }
+            // console.log('e');
+            input.lastElementChild.classList.remove('active-span')
+            // console.log('ent');
+        }
+
+        input.classList.remove('active-input')
+            // console.log('ecom');
     })
 }
 
@@ -41,10 +54,9 @@ const setInputValues = () => {
 onlineIdInput.addEventListener('input', setInputValues)
 passwordInput.addEventListener('input', setInputValues)
 
-const handleInputValue = (e) =>{
-    let input = e.currentTarget
-    console.log(input);
-}
+// const handleInputValue = (e) =>{
+//     let input = e.currentTarget
+// }
 
 
 const highlightLoginBtn = () => {
@@ -56,14 +68,29 @@ const highlightLoginBtn = () => {
 
 
 window.addEventListener('click', (e) => {
+    // if(e.target.id === 'input-password') showPassword.style.display = 'block'
     if(e.target.type === 'text' || e.target.type === 'password') return
-    removeInputFieldActiveState()
+    removeInputFieldActiveState(e)
 })
 
-// loginBtn.addEventListener('click', (e) => {
+loginBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    const loginText = loginBtn.firstChild
+    loginText.style.animation = 'submitBtnAnimation .6s ease .1s'
+    // loginText.innerHTML = `<img src="./assets/loading.gif" alt="">`
+    // console.log(loginText);
+})
+
+// showPassword.addEventListener('click', (e) => {
 //     e.preventDefault()
-//     const loginText = loginBtn.firstChild
-//     loginText.style.animation = 'submitBtnAnimation .6s ease .1s'
-//     loginText.innerHTML = `<img src="./assets/loading.gif" alt="">`
-//     console.log(loginText);
+//     e.stopPropagation()
+//     if(passwordInput.type === 'password'){
+//         passwordInput.setAttribute('type', 'text')
+//         showPassword.innerHTML = 'Hide'
+//     }
+//     else{
+//         passwordInput.setAttribute('type', 'password')
+//         showPassword.innerHTML = 'Show'
+//     }
+
 // })
